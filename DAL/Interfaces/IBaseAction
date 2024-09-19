@@ -1,1 +1,16 @@
+namespace iMobile.DAL.Interfaces
+{
+    public interface IBaseRepository<T>
+    {
+        T Create(T entity);
+        
+        T Get(int id);
+
+        IEnumerable<T> Select();    
+
+        bool Delete(T entity);
+
+        Task<T> Update(T entity);
+    }
+}
 
