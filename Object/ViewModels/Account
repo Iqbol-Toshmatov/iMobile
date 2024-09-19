@@ -1,1 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace iMobile.Object.ViewModels.Account
+{
+    public class LoginViewModel
+    {
+        [Required(ErrorMessage = "Enter your name")]
+        [MaxLength(20, ErrorMessage = "Name has to be short than 20 symbols")]
+        [MinLength(3, ErrorMessage = "Name has to be long than 3 symbols")]
+        public string Name { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Enter password")]
+        [Display(Name ="Password")]
+        public string Password { get; set; }
+
+
+    public class RegisterViewModel
+    {
+        [Required(ErrorMessage ="Enter your name")]
+        [MaxLength(20,ErrorMessage ="Name has to be short than 20 symbols")]
+        [MinLength(3,ErrorMessage ="Name has to be long than 3 symbols")]
+        public string Name { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage ="Enter password")]
+        [MinLength(6,ErrorMessage ="Password has to be long than 6 symbols")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage ="Confirm password")]
+        [Compare("Password",ErrorMessage ="Passwords are not equal")]
+
+        public string ConfirmPassword { get; set;}
+
+        
+    }
+
+    }
+}
 
