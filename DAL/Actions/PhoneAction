@@ -1,1 +1,55 @@
+using iMobile.DAL.Interfaces;
+using iMobile.Object.Entity;
+using Microsoft.EntityFrameworkCore;
+
+namespace iMobile.DAL.Repositories
+{
+    public class PhoneRepository : IPhoneRepository
+    {
+        private readonly ApplicationDbContext _db;
+
+        public PhoneRepository(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
+        public async Task<bool> Create(Phone entity)
+        {
+            await _db.Phones.AddAsync(entity);
+            await _db.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> Delete(Phone entity)
+        {
+            _db.Phones.Remove(entity);
+            await _db.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<Phone> Get(int id)
+        {
+            return await _db?.Phones?.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Phone> GetByName(string name)
+        {
+            return await _db?.Phones?.FirstOrDefaultAsync(x=>x.Name== name);
+        }
+
+        public async Task<List<Phone>> Select()
+        {
+            return await _db.Phones.ToListAsync();
+        }
+
+        public async Task<Phone> Update(Phone entity)
+        {
+            _db.Phones.Update(entity);
+            _db?.SaveChangesAsync();
+            return entity;
+        }
+    }
+}
 
