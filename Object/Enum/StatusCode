@@ -1,1 +1,10 @@
+namespace iMobile.Object.Enum
+{
+    public enum StatusCode
+    {
+        Ok=200,
+        InternalServerError=500,
+        NotFound=0
+    }
+}
 
