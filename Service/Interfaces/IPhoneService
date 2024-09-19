@@ -1,1 +1,22 @@
+using iMobile.Object.Entity;
+using iMobile.Object.Response;
+using iMobile.Object.ViewModels.Phone;
+
+namespace iMobile.Service.Interfaces
+{
+    public interface IPhoneService
+    {
+        Task<IBaseResponse<IEnumerable<Phone>>> GetPhones();
+
+        Task<IBaseResponse<Phone>> GetPhone(int id);
+
+        Task<IBaseResponse<PhoneViewModel>> CreatePhone(PhoneViewModel phoneViewModel);
+
+        Task<IBaseResponse<bool>> DeletePhone(int id);
+
+        Task<IBaseResponse<Phone>> GetByName(string name);
+
+        Task<IBaseResponse<Phone>> Edit(int id,PhoneViewModel model);    
+    }
+}
 
